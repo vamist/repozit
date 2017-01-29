@@ -1,4 +1,6 @@
 <?php require_once "functions.php";
+$bredCrumbs = array('name', 'link');
+
 
  if (isset($_GET["category"])) {
 	$crumb = "category";
@@ -22,6 +24,7 @@
 			$text = $post[0]["text"];
 			$keywords = $post[0]["keywords"];
 			$description = $post[0]["description"];	
+			$name = $title;
 		include "header.php";		
 		include "menu.php";	
 		echo  "</section>"; // banner end
@@ -29,6 +32,7 @@
 	}
 	else {
 		$id=0;
+		$name = "Все о подарках";
 		include "header.php";		
 		include "menu.php";
 		include "blog.php";
@@ -53,6 +57,7 @@
  
 else   {  
 	$crumb = "main";
+	$name = "Главная";
 	$id = 0;
 	include "header.php";		
 	include "menu.php";	
@@ -60,7 +65,7 @@ else   {
 	echo  "</section>"; // banner end
 	include "page.php";	 
  } 
- 
+ setCrumb($crumb, $id);
 
 	include "footer.php";	
 ?>
